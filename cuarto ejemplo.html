@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>Mapbox GL JS Example</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css' rel='stylesheet' />
+  <style>
+    body { margin: 0; padding: 0; }
+    #map { height: 100vh; width: 100%; }
+  </style>
+</head>
+<body>
+  <div id='map'></div>
+
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoiam9zZW1hbnVlbGNhbXBvcyIsImEiOiJjbGpjdXc1eXkxbmdzM2puNTM3NGJsejk1In0.vxX6QLFXwXmKb_GsBAfI4w';
+
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [-64, -31],
+      zoom: 7
+    });
+
+    map.on('load', function() {
+      map.addSource('prueba-5qe2qn', {
+        type: 'vector',
+        url: 'josemanuelcampos.dglem5y5' // Reemplaza con tu Share link o Tileset ID
+      });
+
+      map.addLayer({
+        id: 'prueba-5qe2qn',
+        type: 'fill',
+        source: 'prueba-5qe2qn',
+        'source-layer': 'prueba-5qe2qn', // Reemplaza con el nombre de tu capa
+        paint: {
+          'fill-color': 'blue',
+          'fill-opacity': 0.5
+        },
+        layout: {
+          visibility: 'visible'
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
+
